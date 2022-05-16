@@ -4,27 +4,30 @@
 #include <stdio.h>
 #include "Owner.h"
 
-void Owner::init(FIO f, int i, int e) {
+void Owner::init(FIO fio, int income, int expenses, Shop shop) {
 	this->fio = fio;
 	this->income = income;
 	this->expenses = expenses;
+	this->shop = shop;
 }
 
-void Owner::enter() {
-	std::cout << "Введите ФИО владельца: ";
-	fio.enter();
-	std::cout << "\nВведите доходы: ";
+void Owner::enter(FIO fio) {
+	this->fio = fio;
+	std::cout << "Введите доходы: ";
 	std::cin >> income;
-	std::cout << "\nВведите расходы: ";
+	std::cout << "Введите расходы: ";
 	std::cin >> expenses;
 	while (getchar() != '\n');
+	std::cout << std::endl;
 }
 
 void Owner::print() {
-	std::cout << "\nИнформация о владельце:\n";
+	std::cout << "Информация о владельце:\n";
 	fio.print();
-	std::cout << "\nДоходы - " << income << "\nРасходы - " << expenses << "\nПрибыль - " << profitOwner() << "\n";
+	std::cout << "Доходы - " << income << "\nРасходы - " << expenses << "\nПрибыль - " << profitOwner() << "\n";
+	std::cout << std::endl;
 }
+
 int Owner::profitOwner() {
 	return income - expenses;
 }

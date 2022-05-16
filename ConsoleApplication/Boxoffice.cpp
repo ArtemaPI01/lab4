@@ -5,30 +5,32 @@
 #include "Boxoffice.h"
 #include <string>
 
-void Boxoffice::init(int w, int c, FIO f) { //Метод создания 
+void Boxoffice::init(int workers, int count, FIO fio) {
 	this->workers = workers;
 	this->count = count;
 	this->fio = fio;
 }
 
-void Boxoffice::enter() {
-	std::cout << "\nВведите ФИО старшего кассира : ";
-	fio.enter();
+void Boxoffice::enter(FIO fio) {
+	this->fio = fio;
 	std::cout << "Введите кол-во касс рабочих: ";
 	std::cin >> workers;
-	std::cout << "\nВведите кол-во касс: ";
+	std::cout << "Введите кол-во касс: ";
 	std::cin >> count;
 	while (getchar() != '\n');
+	std::cout << std::endl;
 }
 
 void Boxoffice::print() {
-	std::cout << "\nКасса:\nКол-во рабочих - " << workers << "\nКол - во касс - " << count;
+	std::cout << "Касса:\nКол-во рабочих - " << workers << "\nКол - во касс - " << count;
+	std::cout << "\nФИО старшего кассира:\n";
 	fio.print();
+	std::cout << std::endl;
 }
 void Boxoffice::cloakBoxoffice(int x) {
 	int a;
 	if (count - workers < 0)
 		a = (x / count) * 2;
 	a = (x / workers) * 2;
-	std::cout << "\nВремя обслуживания " << x << " клиентов - " << a << " минуты\n";
+	std::cout << "Время обслуживания " << x << " клиентов - " << a << " минуты";
 }

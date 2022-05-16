@@ -5,27 +5,52 @@
 #include "Shop.h"
 #include <string>
 
-void Shop::init(std::string name, std::string type, std::string street, std::string cloak) {
+void Shop::init(std::string name, std::string type, std::string street, std::string cloak, std::string products, int station) {
 	this->name = name;
 	this->type = type;
 	this->street = street;
 	this->cloak = cloak;
+	ware.init(products, station);
 }
 
 void Shop::enter() {
 	std::cout << "Введите название: ";
 	getline(std::cin, name);
-	std::cout << "\nВведите тип: ";
+	std::cout << "Введите тип: ";
 	getline(std::cin, type);
-	std::cout << "\nВведите улицу: ";
+	std::cout << "Введите улицу: ";
 	getline(std::cin, street);
-	std::cout << "\nВведите часы работы: ";
+	std::cout << "Введите часы работы: ";
 	getline(std::cin, cloak);
+	std::cout << std::endl;
+	ware.enter();
 }
 
 void Shop::print() {
-	std::cout << "\nИнформация о магазине:\nНазвание - " << name << "\nТип - " << type << "\nУлица - " << street << "\nЧасы работы - " << cloak << "\n", name, type, street, cloak;
+	std::cout << "Информация о магазине:\nНазвание - " << name << "\nТип - " << type << "\nУлица - " << street << "\nЧасы работы - " << cloak << "\n", name, type, street, cloak;
+	ware.print();
 }
+
+void Shop::Waremethods(int a) {
+	switch (a) {
+	case 0: {
+		std::string p;
+		std::cout << "Введите название товара: ";
+		getline(std::cin, p);
+		ware.Poisk(p);
+	}break;
+	case 1: {
+		std::cout << "Введите кол-во тонн: ";
+		int t;
+		std::cin >> t;
+		while (getchar() != '\n');
+		std::cout << "Время разгрузки "<< t <<" тонн: " << ware.cloakWarehouse(t) << " мин.\n" << std::endl;
+	}break;
+	default:
+			break;
+	}
+}
+
 void Shop::cloakShop() {
 	char str1[5];
 	char str2[5];
@@ -43,5 +68,5 @@ void Shop::cloakShop() {
 		b += 60;
 		a--;
 	}
-	std::cout << "\nЧасы работы - " << cloak << "\nЧасы -  " << a << " \nМинуты - " << b << "\n";
+	std::cout << "Часы работы - " << cloak << "\nЧасы -  " << a << " \nМинуты - " << b << "\n" << std::endl;
 }

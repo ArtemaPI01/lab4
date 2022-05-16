@@ -11,15 +11,17 @@ void Warehouse::init(std::string products, int station) {
 }
 
 void Warehouse::enter() {
-	std::cout << "\nТовар: ";
+	std::cout << "Товар: ";
 	getline(std::cin, products);
 	std::cout << "Кол-во пунктов приема: ";
 	std::cin >> station;
 	while (getchar() != '\n');
+	std::cout << std::endl;
 }
 
 void Warehouse::print() {
-	std::cout << "\nСклад\nТовар - " << products << "\nПункты приема - " << station << "\n";
+	std::cout << "Склад:\nТовар - " << products << "\nПункты приема - " << station << "\n";
+	std::cout << std::endl;
 }
 
 int Warehouse::cloakWarehouse(int x) {
@@ -27,7 +29,7 @@ int Warehouse::cloakWarehouse(int x) {
 	int time = 0;
 	while (i < x)
 	{
-		time += 15;
+		time += 30;
 		i += station;
 	}
 	return time;
@@ -36,7 +38,8 @@ int Warehouse::cloakWarehouse(int x) {
 void Warehouse::Poisk(std::string product) {
 	size_t pos = products.find(product);
 	if (pos != std::string::npos)
-		std::cout << product << " есть на складе\n";
+		std::cout << product << " есть на складе" << "\n";
 	else
-		std::cout << product << " нет на складе\n";
+		std::cout << product << " нет на складе" << "\n";
+	std::cout << std::endl;
 }

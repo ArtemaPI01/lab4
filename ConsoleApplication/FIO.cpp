@@ -11,13 +11,14 @@ void FIO::init(std::string name, std::string surname, std::string patronymic) {
 	this->patronymic = patronymic;
 }
 void FIO::enter() {
-	std::cout << "\nВведите имя: ";
+	std::cout << "Введите имя: ";
 	getline(std::cin, name);
-	std::cout << "\nВведите фамилию: ";
+	std::cout << "Введите фамилию: ";
 	getline(std::cin, surname);
-	std::cout << "\nВведите Отчество: ";
+	std::cout << "Введите отчество: ";
 	getline(std::cin, patronymic);
+	std::cout << std::endl;
 }
 void FIO::print() {
-	std::cout << "\nИмя: " << name << " Фамилия: " << surname << " Отчество : " << patronymic;
+	std::cout << "Имя: " << name << " Фамилия: " << surname << " Отчество : " << patronymic << "\n";
 }
